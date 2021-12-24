@@ -1303,6 +1303,17 @@ BOOL _sessionInterrupted = NO;
     });
 }
 
+- (void)stopPreview
+{
+    [self stopSession];
+}
+
+- (void)startPreview
+{
+    [self initializeCaptureSessionInput];
+    [self startSession]; // will already check if session is running
+}
+
 - (void)resumePreview
 {
     [[self.previewLayer connection] setEnabled:YES];

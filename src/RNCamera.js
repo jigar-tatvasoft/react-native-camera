@@ -635,6 +635,15 @@ export default class Camera extends React.Component<PropsType, StateType> {
   stopRecording() {
     CameraManager.stopRecording(this._cameraHandle);
   }
+  
+  stopPreview() {
+    CameraManager.stopPreview(this._cameraHandle);
+  }
+
+  startPreview() {
+    if(this._cameraHandle)
+      CameraManager.startPreview(this._cameraHandle);
+  }
 
   pauseRecording() {
     CameraManager.pauseRecording(this._cameraHandle);

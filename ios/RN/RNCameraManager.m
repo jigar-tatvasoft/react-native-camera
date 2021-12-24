@@ -457,6 +457,37 @@ RCT_EXPORT_METHOD(resumePreview:(nonnull NSNumber *)reactTag)
     }];
 }
 
+RCT_EXPORT_METHOD(startPreview:(nonnull NSNumber *)reactTag)
+{
+#if TARGET_IPHONE_SIMULATOR
+    return;
+#endif
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, RNCamera *> *viewRegistry) {
+        RNCamera *view = viewRegistry[reactTag];
+        if (![view isKindOfClass:[RNCamera class]]) {
+            RCTLogError(@"Invalid view returned from registry, expecting RNCamera, got: %@", view);
+        } else {
+            [view startPreview];
+        }
+    }];
+}
+
+
+RCT_EXPORT_METHOD(stopPreview:(nonnull NSNumber *)reactTag)
+{
+#if TARGET_IPHONE_SIMULATOR
+    return;
+#endif
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, RNCamera *> *viewRegistry) {
+        RNCamera *view = viewRegistry[reactTag];
+        if (![view isKindOfClass:[RNCamera class]]) {
+            RCTLogError(@"Invalid view returned from registry, expecting RNCamera, got: %@", view);
+        } else {
+            [view stopPreview];
+        }
+    }];
+}
+
 RCT_EXPORT_METHOD(pausePreview:(nonnull NSNumber *)reactTag)
 {
 #if TARGET_IPHONE_SIMULATOR

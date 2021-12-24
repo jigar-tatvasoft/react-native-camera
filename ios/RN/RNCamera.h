@@ -96,6 +96,8 @@
 - (void)stopRecording;
 - (void)resumePreview;
 - (void)pausePreview;
+- (void)stopPreview;
+- (void)startPreview;
 - (void)setupOrDisablePinchZoom;
 - (void)setupOrDisableBarcodeScanner;
 - (void)setupOrDisableTextDetector;
